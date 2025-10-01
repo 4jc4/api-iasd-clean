@@ -18,7 +18,13 @@
     "test:cov": "jest --config jest.config.unit.ts --coverage",
     "test:int": "jest --config jest.config.integration.ts --runInBand",
     "test:e2e": "jest --config jest.config.e2e.ts",
-    "test:all": "npm run test:unit && npm run test:int && npm run test:e2e"
+    "test:all": "npm run test:unit && npm run test:int && npm run test:e2e",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down -v",
+    "db:migrate": "prisma migrate dev",
+    "db:reset": "prisma migrate reset --force && prisma db seed",
+    "db:studio": "prisma studio",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
