@@ -17,6 +17,7 @@ describe('CreateUserUseCase', () => {
       findById: jest.fn(),
       findByEmail: jest.fn(),
       save: jest.fn(),
+      deleteById: jest.fn(),
     };
     const hash: jest.Mocked<HashGenerator> = {
       hash: jest.fn().mockResolvedValue('hashed-password'),
@@ -179,6 +180,7 @@ describe('CreateUserUseCase', () => {
     const repo: jest.Mocked<UserRepository> = {
       findById: jest.fn().mockResolvedValue(null),
       findByEmail: jest.fn().mockResolvedValue(null),
+      deleteById: jest.fn(),
       save: jest
         .fn()
         .mockRejectedValue(new EmailAlreadyInUseError('user@mail.com')),
